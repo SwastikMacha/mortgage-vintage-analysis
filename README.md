@@ -43,7 +43,7 @@ Page 1, executive view:
 
 Page 2, vintage matrix and monthly hazard:
 
-![Vintage matrix](Vintage matrix.png)
+![Vintage matrix](docs/Vintage matrix.png)
 
 Page 3, drivers of the deterioration:
 
