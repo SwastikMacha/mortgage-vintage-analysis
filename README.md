@@ -49,14 +49,14 @@ Page 3, drivers of the deterioration:
 
 ![Drivers](docs/page3_drivers.png)
 
-The Power BI file is in [`powerbi/Mortgage_Risk_Monitor.pbix`](powerbi/Mortgage_Risk_Monitor.pbix). It reads the CSV files in `outputs/`.
+The Power BI file is in [`powerbi/Mortgage_Risk_Monitor.pbix`](powerbi/Mortgage_Risk_Monitor.pbix). It reads the CSV files in `output/`.
 
 ## How it works
 
 1. **`scripts/Transforming.py`** reads the raw origination and monthly performance files and reduces them to one row per loan: the loan age at first 90+ DPD and the last age observed. Unknown FICO (9999) and unknown LTV, DTI and CLTV (999) are set to missing.
 2. **`scripts/Matrix.py`** builds the vintage curves, the monthly hazard rate, the vintage matrix and segment cuts by FICO band and LTV band.
 3. **`scripts/mix_shift.py`** applies each vintage's FICO-band default rates to 2012's borrower mix. The result separates the gap into a mix effect and a performance effect.
-4. **Power BI** loads the CSV outputs and presents them in three pages.
+4. **Power BI** loads the CSV output and presents them in three pages.
 
 ## Definitions and assumptions
 
@@ -92,7 +92,7 @@ mortgage-vintage-analysis/
 │   ├── Transforming.py
 │   ├── Matrix.py
 │   └── mix_shift.py
-├── outputs/
+├── output/
 │   ├── vintage_curves.csv
 │   ├── vintage_matrix.csv
 │   ├── vintage_segments.csv
@@ -119,7 +119,7 @@ mortgage-vintage-analysis/
    python scripts/Matrix.py
    python scripts/mix_shift.py
 ```
-4. Open `powerbi/Mortgage_Risk_Monitor.pbix` and point its data sources to the CSV files in `outputs/` (Home, Transform data, Data source settings).
+4. Open `powerbi/Mortgage_Risk_Monitor.pbix` and point its data sources to the CSV files in `output/` (Home, Transform data, Data source settings).
 
 The scripts expect the folders `C:\mortgage_data\raw` (input) and `C:\mortgage_data\clean` (output). Change the `RAW` and `OUT` lines at the top of each script to use different locations.
 
