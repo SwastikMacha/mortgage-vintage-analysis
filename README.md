@@ -37,26 +37,20 @@ The raw data is not in this repository because of Freddie Mac's terms of use. Se
 
 ## Dashboard
 
-Page 1, executive view:
+The Power BI file is in [`powerbi/Mortgage_Risk_Monitor.pbix`](powerbi/Mortgage_Risk_Monitor.pbix). It reads the CSV files in `output/` and has three pages. A screenshot of each page is saved in the `docs/` folder:
 
-![Executive view](docs/Exevutive View.png)
-
-Page 2, vintage matrix and monthly hazard:
-
-![Vintage matrix](docs/Vintage matrix.png)
-
-Page 3, drivers of the deterioration:
-
-![Drivers](docs/Drivers.png)
-
-The Power BI file is in [`powerbi/Mortgage_Risk_Monitor.pbix`](powerbi/Mortgage_Risk_Monitor.pbix). It reads the CSV files in `output/`.
+| Page | What it shows | Screenshot |
+|---|---|---|
+| 1. Executive view | Worst vintage, worst and best 24-month default rates, ratio of the worst vintage to 2012, cumulative default curves, and default rates at 12, 24 and 36 months | `docs/page1_executive.png` |
+| 2. Vintage matrix | Heatmap of cumulative 90+ DPD by vintage and months on book, plus the monthly hazard rate (3-month rolling average) | `docs/page2_matrix.png` |
+| 3. Drivers | 24-month default rate by FICO or LTV band, the mix vs performance split of each vintage's gap to 2012, and the FICO mix of each vintage | `docs/page3_drivers.png` |
 
 ## How it works
 
 1. **`scripts/Transforming.py`** reads the raw origination and monthly performance files and reduces them to one row per loan: the loan age at first 90+ DPD and the last age observed. Unknown FICO (9999) and unknown LTV, DTI and CLTV (999) are set to missing.
 2. **`scripts/Matrix.py`** builds the vintage curves, the monthly hazard rate, the vintage matrix and segment cuts by FICO band and LTV band.
 3. **`scripts/mix_shift.py`** applies each vintage's FICO-band default rates to 2012's borrower mix. The result separates the gap into a mix effect and a performance effect.
-4. **Power BI** loads the CSV output and presents them in three pages.
+4. **Power BI** loads the CSV outputs and presents them in three pages.
 
 ## Definitions and assumptions
 
@@ -85,7 +79,6 @@ The Power BI file is in [`powerbi/Mortgage_Risk_Monitor.pbix`](powerbi/Mortgage_
 mortgage-vintage-analysis/
 ├── README.md
 ├── requirements.txt
-├── .gitignore
 ├── data/
 │   └── README.md            # download instructions (raw data not included)
 ├── scripts/
