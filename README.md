@@ -39,15 +39,15 @@ The raw data is not in this repository because of Freddie Mac's terms of use. Se
 
 Page 1, executive view:
 
-![Executive view](docs/page1_executive.png)
+![Executive view](docs/Exevutive View.png)
 
 Page 2, vintage matrix and monthly hazard:
 
-![Vintage matrix](docs/page2_matrix.png)
+![Vintage matrix](Vintage matrix.png)
 
 Page 3, drivers of the deterioration:
 
-![Drivers](docs/page3_drivers.png)
+![Drivers](docs/Drivers.png)
 
 The Power BI file is in [`powerbi/Mortgage_Risk_Monitor.pbix`](powerbi/Mortgage_Risk_Monitor.pbix). It reads the CSV files in `output/`.
 
